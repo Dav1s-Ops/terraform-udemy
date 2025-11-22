@@ -10,10 +10,10 @@ output "vpc_id" {
 
 output "public_url" {
   description = "Public URL for our Web Sever"
-  value = "https://${aws_instance.web_server.private_ip}:8080/index.html"
+  value       = "https://${aws_instance.web_server.private_ip}:8080/index.html"
 }
 
 output "vpc_information" {
   description = "VPC Information about Environment"
-  value = "Your ${aws_vpc.vpc.tags.Environment} VPC has an ID of ${aws_vpc.vpc.id}"
+  value       = "Your ${aws_vpc.vpc.tags.Environment} VPC has an ID of ${aws_vpc.vpc.id}"
 }
