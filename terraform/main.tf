@@ -21,7 +21,7 @@ resource "aws_vpc" "vpc" {
     Name        = var.vpc_name
     Environment = "demo_environment"
     Terraform   = "true"
-    Region      = data.aws_region.current.region
+    Region      = data.aws_region.current.name
   }
 }
 
@@ -162,4 +162,13 @@ resource "aws_subnet" "variables-subnet" {
     Name      = "sub-variables-${var.variables_sub_az}"
     Terraform = "true"
   }
+}
+
+resource "tls_private_key" "generated" {
+  algorithm = "RSA"
+}
+
+resource "local_file" "private_key_pem" {
+  content = tls_private_key.generated.private_key_pem
+  filename = "my-aws-key.pem"
 }
